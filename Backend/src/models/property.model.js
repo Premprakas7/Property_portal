@@ -6,7 +6,7 @@ const propertySchemma=mongoose.Schema({
     city:{type:String, required:true},
     property_type:{type:String, required:true},
     available:{type:String, required:true},
-    img:{type:String, required:true}
+    img:[{type:String, required:true}]
 },
 {
     versionKey:false,
