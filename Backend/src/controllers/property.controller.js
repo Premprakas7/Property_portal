@@ -28,5 +28,14 @@ router.post("/property", upload.single("img"),async(req,res)=>{
     }
 })
 
+router.get("/property/:id", async(req,res)=>{
+    try {
+        const property=await Property.find().lean();
+        return res.status(200).send(property)
+    } catch (err) {
+        return res.status(400).send(err)
+    }
+})
+
 
 module.exports=router
