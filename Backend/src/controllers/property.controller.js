@@ -3,7 +3,7 @@ const Property=require("../models/property.model");
 const upload = require("../middleware/uploads");
 const router=express.Router();
 
-router.get("/list-properties", async(req,res)=>{
+router.get("/property", async(req,res)=>{
     try {
         const property=await Property.find().lean().exec();
         return res.status(200).send({property})
@@ -45,6 +45,14 @@ router.put("/property/:id", async(req,res)=>{
         return res.status(200).send({property})
     } catch (err) {
         return res.status(400).send(err);
+    }
+})
+router.delete("/property/:id", async (req,res)=>{
+    try {
+        const property=Property.findByIdAndDelete(req.params.id).lean().exec();
+        return res.status(200).send({property})
+    } catch (err) {
+        return res.status(400).send(err)
     }
 })
 
