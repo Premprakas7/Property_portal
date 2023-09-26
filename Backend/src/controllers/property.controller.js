@@ -3,16 +3,16 @@ const router=express.Router();
 const Property=require("../models/property.model");
 const uploads = require("../middleware/uploads");
 
-router.get("api/list-properties", async(req,res)=>{
+router.get("/list-properties", async(req,res)=>{
     try {
         const property=await Property.find().lean().exec();
-        res.status(200).send(property)
+        return res.status(200).send(property)
     } catch (err) {
-        res.status(400).send(err)
+       return res.status(400).send(err)
     }
 })
 
-router.post("api/property", uploads.any(""),async(req,res)=>{
+router.post("/property", uploads.any(""),async(req,res)=>{
     try {
         const property = await Property.create({
             name:req.body.name,
@@ -22,8 +22,10 @@ router.post("api/property", uploads.any(""),async(req,res)=>{
             available:req.body.available,
             img:req.file.path
         })
-        res.status(200).send(property);
+      return  res.status(200).send(property);
     } catch (err){
-        res.status(400).send(err);
+      return  res.status(400).send(err);
     }
 })
+
+module.exports=router
