@@ -6,8 +6,9 @@ const loginController=require("./controllers/login.controller");
 const mongoose=require("mongoose");
 mongoose.set('strictQuery', true);
 const app=express();
+var cors = require('cors')
 
-
+app.use(cors())
 app.use(express.json());
 app.use("/api",propertyController);
 app.use("/users",userController)
