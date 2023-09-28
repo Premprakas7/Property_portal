@@ -14,8 +14,15 @@ const Data = () => {
     <div>
         <div className='m-[1rem]'>
         {
-            data?.property.map((e)=><div>
-                <div><img src={e.img} alt="p" /></div>
+            data?.property.map((e)=><div className='border-2 border-blue-800 w-[18rem]'>
+                <div><img src={e.img} alt="p" className='w-[15rem] h-[8rem]'/></div>
+                <p className='text-[1.1rem] font-[800]'>Name : {e.name}</p>
+                <p className='text-[1.1rem] font-[800]'>Location : {e.city}</p>
+                <div className='flex font-[600] gap-[1rem] ml-[1rem]'>
+                    <p >{e.price}₹</p>
+                    <p className='text-[#9a031e]'>{e.property_type}</p>
+                    <p>{e.available}</p>
+                </div>
 
             </div>)
         }
